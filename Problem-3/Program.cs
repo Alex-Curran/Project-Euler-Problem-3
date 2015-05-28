@@ -21,6 +21,42 @@ namespace Problem_3
     {
         static void Main(string[] args)
         {
+           long number = 600851475143;
+           long largest = primeFactorization(number);
+
+           Console.WriteLine("Largest prime factor is {0}", largest);
+
+        }
+
+        /// <summary>
+        /// Trial division prime factorization method
+        /// </summary>
+        /// <param name="number">Number to be factorerd</param>
+        private static long primeFactorization(long number)
+        {
+            long tempNumber = number;
+            long largestFact = 0;
+
+            int counter = 2;
+            while (counter * counter <= tempNumber)
+            {
+                if (tempNumber % counter == 0)
+                {
+                    tempNumber = tempNumber / counter;
+                    largestFact = counter;
+                }
+                else
+                {
+                    counter++;
+                }
+            }
+            if (tempNumber> largestFact)
+            { 
+                largestFact = tempNumber;
+            }
+
+            return largestFact;
+               
         }
     }
 }
